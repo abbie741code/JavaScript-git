@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0728 交錯漂浮版</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            outline: 1px solid red;
+        }
+
+        body{
+            padding: 100px 0;
+            
+        }
+
+        .wrap{
+            width: 1200px;
+            margin: auto;
+            outline: 5px solid rgb(18, 123, 176);
+
+        }
+
+        .item{
+            display: flex;
+            /* justify-content: center; */
+            align-items: center;
+            margin-bottom: 70px;
+            background-color: rgb(171, 175, 175);
+
+        }
+        .item .pic{
+            width: 55%;
+            background-color: rgb(187, 222, 200);
+            flex-shrink: 0;
+            
+        }
+
+        /* ⭐️ 要用 vertical-align: middle;才不會有奇怪縫隙 */
+        .item .pic img{
+            width: 100%;
+            vertical-align: middle;
+        }
+
+
+        .item .txt{
+            width: 55%;
+            background-color: rgb(31, 192, 192);
+            flex-shrink: 0;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="item">
+            <div class="pic">
+                <img src="https://picsum.photos/id/650/600/350" alt="">
+            </div>
+            <div class="txt">
+                <h2>這是我的第一個作品</h2>
+                <p>Gogoro切版-模仿Gogoro</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="pic">
+                <img src="https://picsum.photos/id/652/600/350" alt="">
+            </div>
+            <div class="txt">
+                <h2>這是我的第二個作品</h2>
+                <p>愛毛孩園</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="pic">
+                <img src="https://picsum.photos/id/656/600/350" alt="">
+            </div>
+            <div class="txt">
+                <h2>這是團隊協作的專案</h2>
+                <p>工程師交友網站Mate</p>
+            </div>
+        </div>
+
+        <div class="item">
+            <div class="pic">
+                <img src="https://picsum.photos/id/698/600/350" alt="">
+            </div>
+            <div class="txt">
+                <h2>Behance作品集</h2>
+                <p>努力累積中</p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</body>
+
+</html>
