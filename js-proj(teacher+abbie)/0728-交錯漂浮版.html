@@ -12,18 +12,20 @@
             margin: 0;
             padding: 0;
             list-style: none;
-            outline: 1px solid red;
+            /* outline: 1px solid red; */
+            font-family: 'Noto Sans TC', sans-serif;
         }
 
         body{
             padding: 100px 0;
-            
+           
+            background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%) ;
         }
 
         .wrap{
             width: 1200px;
             margin: auto;
-            outline: 5px solid rgb(18, 123, 176);
+            /* outline: 5px solid rgb(18, 123, 176); */
 
         }
 
@@ -32,12 +34,17 @@
             /* justify-content: center; */
             align-items: center;
             margin-bottom: 70px;
-            background-color: rgb(171, 175, 175);
+            /* background-color: rgb(171, 175, 175); */
 
         }
+        .item h2{
+            font-weight: 900;}
+        .item p {
+            font-weight: 700;}
+
         .item .pic{
             width: 55%;
-            background-color: rgb(187, 222, 200);
+            /* background-color: rgb(187, 222, 200); */
             flex-shrink: 0;
             
         }
@@ -51,10 +58,36 @@
 
         .item .txt{
             width: 55%;
-            background-color: rgb(31, 192, 192);
+            /* background-color:#bfc9d7; */
             flex-shrink: 0;
+            padding: 50px 30px;
+            /* 加了 box-sizing: border-box原本爆版的地方都變正常了 */
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
+            
         }
 
+        /*  ⭐️ “>“ ----> 代表我要選取到第一層物件(不會到孫子) */
+
+
+        .item > :first-child{
+            margin-right: -10%;
+
+        }
+
+        .item:nth-child(1) .txt{
+            background-color: rgba(191,201,215,0.8);
+        }
+        .item:nth-child(2) .txt{
+            background-color: rgba(226,210,210,0.8);
+        }
+        .item:nth-child(3) .txt{
+            background-color:rgba(198,198,217,0.8);
+        }
+        .item:nth-child(4) .txt{
+            background-color: rgba(234,192,192,0.8);
+        }
     </style>
 
 </head>
@@ -72,13 +105,14 @@
         </div>
 
         <div class="item">
-            <div class="pic">
-                <img src="https://picsum.photos/id/652/600/350" alt="">
-            </div>
             <div class="txt">
                 <h2>這是我的第二個作品</h2>
                 <p>愛毛孩園</p>
             </div>
+            <div class="pic">
+                <img src="https://picsum.photos/id/652/600/350" alt="">
+            </div>
+          
         </div>
 
         <div class="item">
@@ -92,13 +126,14 @@
         </div>
 
         <div class="item">
-            <div class="pic">
-                <img src="https://picsum.photos/id/698/600/350" alt="">
-            </div>
             <div class="txt">
                 <h2>Behance作品集</h2>
                 <p>努力累積中</p>
             </div>
+            <div class="pic">
+                <img src="https://picsum.photos/id/698/600/350" alt="">
+            </div>
+          
         </div>
     </div>
 
