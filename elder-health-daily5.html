@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>長輩每日健康 5 件事</title>
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #f5f3ee;
+    font-family: "PingFang TC", "Microsoft JhengHei", "Heiti TC", Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 32px 16px 48px;
+  }
+  .poster {
+    width: 680px;
+    background: white;
+    border-radius: 20px;
+    padding: 36px 36px 40px;
+    border: 1px solid #e0ddd5;
+  }
+  .header {
+    background: #EAF3DE;
+    border: 0.5px solid #97C459;
+    border-radius: 14px;
+    text-align: center;
+    padding: 18px 20px;
+    margin-bottom: 24px;
+  }
+  .header h1 {
+    font-family: "PingFang TC", "Microsoft JhengHei", "Heiti TC", Arial, sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #27500A;
+    margin-bottom: 4px;
+  }
+  .header p {
+    font-size: 13px;
+    color: #3B6D11;
+    letter-spacing: 0.06em;
+  }
+
+  /* full-width card */
+  .card-full {
+    border-radius: 14px;
+    padding: 20px 22px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+  }
+  /* half-width cards */
+  .row2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+  .card-half {
+    border-radius: 14px;
+    padding: 20px 18px;
+  }
+
+  .icon-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    flex-shrink: 0;
+  }
+  .card-content { flex: 1; }
+  .card-label {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+  .card-why {
+    font-size: 13px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .rule-pill {
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    line-height: 1.65;
+    border-left: 3px solid;
+  }
+  .rule-pill strong {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-bottom: 3px;
+  }
+
+  /* water calc */
+  .calc-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  .calc-row input {
+    width: 72px;
+    padding: 6px 8px;
+    font-size: 17px;
+    font-weight: 700;
+    text-align: center;
+    border: 2px solid #378ADD;
+    border-radius: 8px;
+    color: #0C447C;
+    background: white;
+    font-family: "PingFang TC", "Microsoft JhengHei", Arial, sans-serif;
+    outline: none;
+  }
+  .calc-row .op { font-size: 13px; color: #185FA5; }
+  .calc-result { font-size: 22px; font-weight: 700; color: #0C447C; }
+  .calc-unit { font-size: 13px; color: #185FA5; }
+
+  /* color themes */
+  .blue  { background: #E6F1FB; border: 0.5px solid #85B7EB; }
+  .green { background: #EAF3DE; border: 0.5px solid #97C459; }
+  .red   { background: #FCEBEB; border: 0.5px solid #F09595; }
+  .purple{ background: #EEEDFE; border: 0.5px solid #AFA9EC; }
+  .amber { background: #FAEEDA; border: 0.5px solid #EF9F27; }
+
+  .blue  .icon-circle { background: #B5D4F4; }
+  .green .icon-circle { background: #C0DD97; }
+  .red   .icon-circle { background: #F7C1C1; }
+  .purple .icon-circle { background: #CECBF6; }
+  .amber .icon-circle { background: #FAC775; }
+
+  .blue  .card-label { color: #0C447C; }
+  .green .card-label { color: #27500A; }
+  .red   .card-label { color: #791F1F; }
+  .purple .card-label { color: #3C3489; }
+  .amber .card-label { color: #633806; }
+
+  .blue  .card-why { color: #185FA5; }
+  .green .card-why { color: #3B6D11; }
+  .red   .card-why { color: #A32D2D; }
+  .purple .card-why { color: #534AB7; }
+  .amber .card-why { color: #854F0B; }
+
+  .blue  .rule-pill { background: white; border-color: #378ADD; color: #185FA5; }
+  .blue  .rule-pill strong { color: #0C447C; }
+  .green .rule-pill { background: white; border-color: #639922; color: #3B6D11; }
+  .green .rule-pill strong { color: #27500A; }
+  .red   .rule-pill { background: white; border-color: #E24B4A; color: #A32D2D; }
+  .red   .rule-pill strong { color: #791F1F; }
+  .purple .rule-pill { background: white; border-color: #7F77DD; color: #534AB7; }
+  .purple .rule-pill strong { color: #3C3489; }
+  .amber .rule-pill { background: white; border-color: #BA7517; color: #854F0B; }
+  .amber .rule-pill strong { color: #633806; }
+
+  .footer-bar {
+    background: #F1EFE8;
+    border: 0.5px solid #D3D1C7;
+    border-radius: 12px;
+    padding: 16px 20px;
+    text-align: center;
+    margin-top: 8px;
+  }
+  .footer-bar p:first-child {
+    font-size: 15px;
+    font-weight: 700;
+    color: #444441;
+    margin-bottom: 6px;
+  }
+  .footer-bar p:last-child {
+    font-size: 12px;
+    color: #888780;
+  }
+  .timing-bar {
+    background: #E6F1FB;
+    border: 0.5px solid #B5D4F4;
+    border-radius: 10px;
+    padding: 10px 16px;
+    text-align: center;
+    margin-top: 12px;
+    font-size: 13px;
+    color: #185FA5;
+  }
+  .timing-label {
+    font-size: 11px;
+    color: #888780;
+    margin-top: 14px;
+    margin-bottom: 4px;
+    text-align: center;
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .poster { border: none; border-radius: 0; width: 100%; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<div class="poster">
+
+  <div class="header">
+    <h1>長輩每日健康 5 件事</h1>
+    <p>簡單做，身體感謝你</p>
+  </div>
+
+  <!-- 喝水 -->
+  <div class="card-full blue">
+    <div class="icon-circle">💧</div>
+    <div class="card-content">
+      <div class="card-label">喝水</div>
+      <div class="card-why">老人口渴感退化，等渴才喝已經太晚。水喝不夠→頭暈、便秘、腎臟負擔加重。</div>
+      <div class="rule-pill">
+        <strong>每日水量公式</strong>
+        體重（公斤）× 30 = 每天最少要喝的 ml
+      </div>
+      <div class="calc-row">
+        <input type="number" id="weight" value="50" min="30" max="120" oninput="calcWater()" />
+        <span class="op">公斤 × 30 =</span>
+        <span class="calc-result" id="water-result">1500</span>
+        <span class="calc-unit">ml / 天</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="row2">
+    <!-- 蛋白質 -->
+    <div class="card-half green">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+        <div class="icon-circle">🥩</div>
+        <div>
+          <div class="card-label">蛋白質</div>
+          <div class="card-why" style="font-size:12px;">肌肉靠它撐，才不跌倒</div>
+        </div>
+      </div>
+      <div class="rule-pill">
+        <strong>每天吃這些就夠了</strong>
+        雞腿 1 支 ＋ 蛋 1 顆 ＋ 豆腐半盒<br>
+        <span style="font-size:11px;opacity:0.75;">＝ 約 60g 蛋白質，三餐分開吃最好</span>
+      </div>
+    </div>
+
+    <!-- 鐵質 -->
+    <div class="card-half red">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+        <div class="icon-circle">🩸</div>
+        <div>
+          <div class="card-label">鐵質</div>
+          <div class="card-why" style="font-size:12px;">貧血→頭暈→沒精神</div>
+        </div>
+      </div>
+      <div class="rule-pill">
+        <strong>補鐵食物</strong>
+        豬肝・牛肉・蛤蠣・菠菜<br>
+        搭維生素C吸收更好
+      </div>
+    </div>
+  </div>
+
+  <div class="row2">
+    <!-- 睡眠 -->
+    <div class="card-half purple">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+        <div class="icon-circle">🌙</div>
+        <div>
+          <div class="card-label">睡眠</div>
+          <div class="card-why" style="font-size:12px;">睡少不等於健康</div>
+        </div>
+      </div>
+      <div class="rule-pill">
+        <strong>每天 7–8 小時</strong>
+        固定時間睡覺起床<br>
+        睡前 1 小時不滑手機
+      </div>
+    </div>
+
+    <!-- 運動 -->
+    <div class="card-half amber">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+        <div class="icon-circle">🚶</div>
+        <div>
+          <div class="card-label">運動</div>
+          <div class="card-why" style="font-size:12px;">骨頭腦子都需要動</div>
+        </div>
+      </div>
+      <div class="rule-pill">
+        <strong>每天快走 30 分鐘</strong>
+        可分 3 次・每次 10 分鐘<br>
+        太極拳・游泳也很好
+      </div>
+    </div>
+  </div>
+
+  <div class="timing-label">每天喝水時機</div>
+  <div class="timing-bar">
+    起床 · 早餐前後 · 午餐前後 · 下午 · 晚餐前後 · 睡前
+  </div>
+
+  <div class="footer-bar" style="margin-top:16px;">
+    <p>每天做到 ✓ 喝水 &nbsp;✓ 吃蛋白質 &nbsp;✓ 補鐵 &nbsp;✓ 睡好 &nbsp;✓ 走路</p>
+    <p>小習慣，大健康。不需要全部完美，做到就是賺到。</p>
+  </div>
+
+</div>
+
+<script>
+  function calcWater() {
+    var w = parseInt(document.getElementById('weight').value) || 0;
+    document.getElementById('water-result').textContent = (w * 30).toLocaleString();
+  }
+</script>
+</body>
+</html>
